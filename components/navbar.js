@@ -1,4 +1,5 @@
-function navbar(){
+let lsd = JSON.parse(localStorage.getItem("cart_product_info") || []);
+function navbar() {
     return `
 
 <div id="navbar2">
@@ -23,4 +24,4 @@ function navbar(){
 <div id="spacediv"></div>`
 
 }
-export  {navbar};
+export { navbar };

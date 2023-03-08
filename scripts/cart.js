@@ -1,20 +1,20 @@
 
-import {navbar} from "../components/navbar.js"
-let nvd=document.querySelector("#main");
-nvd.innerHTML=navbar()
+import { navbar } from "../components/navbar.js"
+let nvd = document.querySelector("#main");
+nvd.innerHTML = navbar()
 import { footer } from '../components/footer.js';
 let footer_div = document.getElementById('footer');
 // console.log(footer())
 footer_div.innerHTML = footer();
 
-let lsd = JSON.parse(localStorage.getItem("cart_product_info") ||[]);
+let lsd = JSON.parse(localStorage.getItem("cart_product_info") || []);
 //let maindiv = document.getElementById("dleftdiv");
 let laxmidiv = document.getElementById("sdiv1");
 
 //console.log(lsd);
 let total = 0;
 const append = () => {
-  lsd.forEach((el,i) => {
+  lsd.forEach((el, i) => {
     let deach_product = document.createElement("div");
     deach_product.className = "each_product";
 
@@ -64,10 +64,10 @@ const append = () => {
 
     let btn1 = document.createElement("button");
     btn1.innerHTML = "Remove";
-   
+
     btn1.addEventListener("click", () => {
       remove(i)
-     
+      alert("Item removed from cart")
     })
 
 
@@ -80,16 +80,16 @@ const append = () => {
     //maindiv.append(deach_product);
     laxmidiv.append(deach_product)
     let counter = document.getElementById("prod");
-    counter.style.paddingLeft="30px"
+    counter.style.paddingLeft = "30px"
     counter.innerHTML = lsd.length + " Products";
 
 
     total += el.price;
-   
+
 
   });
   //console.log(total)
-  let discount_price= document.getElementById("d4")
+  let discount_price = document.getElementById("d4")
   discount_price.innerHTML = "- ₹" + 2599;
   let without_discount_price = document.getElementById("d2");
   console.log(lsd.length)
@@ -99,17 +99,17 @@ const append = () => {
   } else {
     without_discount_price.innerHTML = "₹" + (total + 2599);
   }
-  
 
 
-  
+
+
   let total_priceshow = document.getElementById("dd2");
   total_priceshow.innerHTML = "₹" + total;
 };
 append();
 function remove(index) {
   let newdata = lsd.filter(function (el, i) {
-    return i !== index 
+    return i !== index
     total = total - el.price;
   })
   localStorage.setItem("cart_product_info", JSON.stringify(newdata));
