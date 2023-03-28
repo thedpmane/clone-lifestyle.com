@@ -1,4 +1,4 @@
-let lsd = JSON.parse(localStorage.getItem("cart_product_info") || []);
+
 function navbar() {
     return `
 
